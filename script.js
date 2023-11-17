@@ -1,6 +1,10 @@
 const canvasContainer = document.querySelector('#canvas-container');
 const templateSelect = document.querySelector('#template-select');
 
+const newGridButton = document.querySelector('#new-grid-btn');
+const cellX = document.querySelector('#cell-x');
+const cellY = document.querySelector('#cell-y');
+
 initCanvas(16,16);
 
 function initCanvas(cellX, cellY){
@@ -46,4 +50,14 @@ function changeGridTemplate(event){
             initCanvas(64,64);
             break;
     }
+}
+
+newGridButton.addEventListener('click', createCustomGrid);
+
+function createCustomGrid(){
+    canvasContainer.replaceChildren();
+    let x = cellX.value;
+    let y = cellY.value;
+    initCanvas(x,y);
+    
 }
