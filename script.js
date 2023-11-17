@@ -65,6 +65,17 @@ function drawOnCanvas(event){
     if(event.type === 'mouseover' && !isMouseDown) return;
     let target = event.target;
     if(target.classList.contains('blank')){
-        target.style.backgroundColor = 'black';
+        //let paintColor = colorPicker.value;
+        let paintColor = getRandomColor();
+        target.style.backgroundColor = paintColor;
     }
+}
+
+function getRandomColor(){
+    let letters = '0123456789ABCDEF'.split('');
+    let hexColor = '#';
+    for(let i=0; i<6; i++){
+        hexColor += letters[Math.round(Math.random() * 16)]; //or *15
+    }
+    return hexColor;
 }
