@@ -5,6 +5,9 @@ const newGridButton = document.querySelector('#new-grid-btn');
 const cellX = document.querySelector('#cell-x');
 const cellY = document.querySelector('#cell-y');
 
+const colorPicker = document.querySelector('#color-picker');
+const colorRainbow = document.querySelector('#color-rainbow');
+
 initCanvas(16,16);
 
 function initCanvas(cellX, cellY){
