@@ -54,7 +54,7 @@ function createCustomGrid(){
 
 let isMouseDown = false;
 canvasContainer.addEventListener('mousedown', () => isMouseDown = true);
-canvasContainer.addEventListener('mouseup', () => isMouseDown = false);
+document.body.onmouseup = () => isMouseDown = false;
 
 canvasContainer.addEventListener('mouseover',drawOnCanvas);
 
