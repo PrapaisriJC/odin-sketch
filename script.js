@@ -10,8 +10,19 @@ function initCanvas(cellX, cellY){
         for(let j = 0; j < cellX; j++){
             const cell = document.createElement('div');
             cell.classList.add('cell');
+            cell.classList.add('blank')
             cellRow.appendChild(cell);
         }
         canvasContainer.appendChild(cellRow);
     }
+}
+
+canvasContainer.addEventListener('mouseover',changeCellColor);
+
+function changeCellColor(event){
+    let target = event.target;
+    if(target.classList.contains('blank')){
+        target.style.backgroundColor = 'black';
+    }
+
 }
