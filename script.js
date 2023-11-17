@@ -1,6 +1,7 @@
 const canvasContainer = document.querySelector('#canvas-container');
+const templateSelect = document.querySelector('#template-select');
 
-initCanvas(64,64);
+initCanvas(16,16);
 
 function initCanvas(cellX, cellY){
 
@@ -25,4 +26,24 @@ function changeCellColor(event){
         target.style.backgroundColor = 'black';
     }
 
+}
+
+templateSelect.addEventListener('click',changeGridTemplate);
+
+function changeGridTemplate(event){
+    let target = event.target;
+    switch(target.id){
+        case 'square-16':
+            canvasContainer.replaceChildren();
+            initCanvas(16,16);
+            break;
+        case 'square-32':
+            canvasContainer.replaceChildren();
+            initCanvas(32,32);
+            break;
+        case 'square-64':
+            canvasContainer.replaceChildren();
+            initCanvas(64,64);
+            break;
+    }
 }
