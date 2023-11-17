@@ -56,6 +56,7 @@ function createCustomGrid(){
 }
 
 let isMouseDown = false;
+let isRainbow = false;
 canvasContainer.addEventListener('mousedown', () => isMouseDown = true);
 document.body.onmouseup = () => isMouseDown = false;
 
@@ -65,9 +66,13 @@ function drawOnCanvas(event){
     if(event.type === 'mouseover' && !isMouseDown) return;
     let target = event.target;
     if(target.classList.contains('blank')){
-        //let paintColor = colorPicker.value;
-        let paintColor = getRandomColor();
-        target.style.backgroundColor = paintColor;
+        if(isRainbow){
+            let paintColor = getRandomColor();
+            target.style.backgroundColor = paintColor;
+        } else {
+            let paintColor = colorPicker.value;
+            target.style.backgroundColor = paintColor;
+        }
     }
 }
 
@@ -79,3 +84,14 @@ function getRandomColor(){
     }
     return hexColor;
 }
+
+
+colorRainbow.addEventListener('change', ()=>{
+    if(colorRainbow.checked){
+        isRainbow = true;
+        colorPicker.disabled = true;
+    } else {
+        isRainbow = false;
+        colorPicker.disabled = false;
+    }
+});
