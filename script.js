@@ -22,16 +22,6 @@ function initCanvas(cellX, cellY){
     }
 }
 
-canvasContainer.addEventListener('mouseover',changeCellColor);
-
-function changeCellColor(event){
-    let target = event.target;
-    if(target.classList.contains('blank')){
-        target.style.backgroundColor = 'black';
-    }
-
-}
-
 templateSelect.addEventListener('click',changeGridTemplate);
 
 function changeGridTemplate(event){
@@ -60,4 +50,18 @@ function createCustomGrid(){
     let y = cellY.value;
     initCanvas(x,y);
     
+}
+
+let isMouseDown = false;
+canvasContainer.addEventListener('mousedown', () => isMouseDown = true);
+canvasContainer.addEventListener('mouseup', () => isMouseDown = false);
+
+canvasContainer.addEventListener('mouseover',drawOnCanvas);
+
+function drawOnCanvas(event){
+    if(event.type === 'mouseover' && !isMouseDown) return;
+    let target = event.target;
+    if(target.classList.contains('blank')){
+        target.style.backgroundColor = 'black';
+    }
 }
